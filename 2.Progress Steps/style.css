@@ -1,0 +1,121 @@
+
+
+/* Permet de donner une couleur pour le changement de chiffre
+Cette option sera liée aux autres par 
+var (--line-border-fill)
+var (--line-border-empty);*/
+:root{
+    --line-border-fill:#3498db;
+    --line-border-empty:#e0e0e0;;
+    
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color:#f6f7 ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+}
+
+/* centrer 1,2,3,4 au centre de la balise */
+.container{
+    text-align: center;
+}
+
+
+.progress-container {
+/* Place les chiffres les un apres les autres et plus en colonne */
+    display: flex;
+/* Met de l'espace entre chaque chiffre */
+    justify-content:  space-between;
+    position: relative;
+/* Place une marge qui l'éloigne des bouttons du dessous */
+    margin-bottom: 30px;
+    max-width: 100%;
+/* On agrandi la largeur de la box */
+    width: 350px;
+    
+}
+
+.progress-container::before {
+    content:'';
+    background-color: var(--line-border-empty);
+    position: absolute;
+    top: 50%;
+    left: 0;
+/* On place le trait bleu au centre */
+    transform: translateY(-50%);
+    height: 4px;
+    width: 100%;
+/* Permet de mettre une transition vers la droite de la barre bleu */
+    z-index: -1;
+}
+
+
+
+.progress {
+    background-color:var(--line-border-fill) ;
+    position: absolute;
+    top: 50%;
+    left: 0;
+/* On place le trait bleu au centre */
+    transform: translateY(-50%);
+    height: 4px;
+    width: 0%;
+/* Permet de mettre une transition vers la droite de la barre bleu */
+    z-index: -1;
+    transition: 0.4s ease;
+}
+
+.circle {
+    background-color: #fff;
+    color: #999;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+/* Placer ses 3 éléments pour centrer les chiffres à l'intérieur du cercle */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid var(--line-border-empty);
+    transition: 0.4s ease;
+}
+
+.circle.active {
+   border-color: var(--line-border-fill); 
+}
+
+.btn{
+    background-color: var(--line-border-fill);
+    color:#fff;
+    border: 0;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: inherit;
+/* Régler la hauteur et la largeur de la box des buttons */
+    padding: 8px 30px;
+    margin: 5px;
+    font-size: 14px;
+}
+
+.btn:active{
+    transform: scale(0.98);
+}
+
+/* retirer les ligne extérieur quand on click dessus */
+.btn:focus{
+    outline: 0;
+}
+
+.btn:disabled {
+    background-color: var(--line-border-empty);
+/* Lorsque la souris sera sur ce bouton, il y y aura un panneau d'interdiction */
+    cursor: not-allowed;
+}
